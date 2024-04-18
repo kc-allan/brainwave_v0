@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Starting migrations..."
+if [ $# -ne 2 ]; then
+	echo "Failed: Enter commit message"
+	exit 1
+fi
+alembic revision --autogenerate -m "$1"
+alembic upgrade head
+echo "Success!"
+exit 0
